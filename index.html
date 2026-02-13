@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wait... Answer this! ❤️</title>
+    <title>Valentine's Access Portal ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="card" id="game-card">
-        <div id="content">
-            <h2 id="questionText">Ready for some questions? 🥰</h2>
+
+    <div class="card">
+        <div id="entry-screen">
+            <h2>Welcome, Please Identify Yourself ❤️</h2>
+            <input type="text" id="nameInput" placeholder="Enter your name here..." />
+            <br>
+            <button id="startBtn">Enter Portal</button>
+        </div>
+
+        <div id="content" class="hidden">
+            <h2 id="questionText">Are you having a good day so far? 😊</h2>
+            <p id="messageText"></p>
             <div class="button-area" id="buttonArea">
                 <button id="yesBtn">Yes!</button>
                 <button id="noBtn">No</button>
@@ -17,11 +26,13 @@
         </div>
 
         <div id="success" class="hidden">
-            <h1>I Knew It! ❤️</h1>
+            <h1 id="victoryHeading">Yay! I Knew It! 🥰</h1>
             <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp3ZzZqZzRueXF3eXp3ZzZqZzRueXF3eXp3ZzZqZzRueXF3eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KztT2c4u8mYYUiMKdJ/giphy.gif" alt="Love">
-            <p>Happy Valentine's Day!</p>
+            <p>You've made me the happiest person! ❤️</p>
         </div>
     </div>
+
+    <audio id="tauntSound" src="funny.mp3" preload="auto"></audio>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>

@@ -1,37 +1,56 @@
 body {
     background-color: #fff0f3;
+    background-image: radial-gradient(#ffb3c1 1px, transparent 1px);
+    background-size: 20px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     font-family: 'Arial', sans-serif;
+    overflow: hidden;
 }
 
 .card {
     background: white;
     padding: 30px;
     border-radius: 25px;
-    box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+    box-shadow: 0 15px 35px rgba(255, 77, 109, 0.3);
     text-align: center;
     width: 90%;
     max-width: 400px;
-    min-height: 250px;
+    min-height: 400px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-/* This is the cage for the No button */
+input {
+    padding: 12px;
+    width: 80%;
+    border: 2px solid #ff4d6d;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    outline: none;
+    font-size: 1rem;
+}
+
+#messageText {
+    height: 25px;
+    color: #ff4d6d;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
 .button-area {
-    margin-top: 30px;
-    height: 120px;
+    margin-top: 20px;
+    height: 180px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
 }
 
 button {
@@ -41,18 +60,23 @@ button {
     border: none;
     cursor: pointer;
     font-weight: bold;
-    transition: transform 0.1s ease;
+    background: #ff4d6d;
+    color: white;
+    transition: transform 0.2s;
 }
 
-#yesBtn { background: #ff4d6d; color: white; z-index: 10; }
-#noBtn { background: #6c757d; color: white; position: absolute; }
+button:active { transform: scale(0.95); }
 
-/* Responsive Adjustments */
+#noBtn {
+    background: #6c757d;
+    position: relative;
+    z-index: 100;
+    transition: none !important; /* Instant teleportation */
+}
+
+.hidden { display: none !important; }
+#success img { width: 100%; border-radius: 15px; margin-top: 15px; }
+
 @media (max-width: 480px) {
-    .card { padding: 20px; }
-    h2 { font-size: 1.4rem; }
-    button { padding: 12px 24px; }
+    .card { padding: 20px; min-height: 420px; }
 }
-
-.hidden { display: none; }
-#success img { width: 100%; border-radius: 15px; }
