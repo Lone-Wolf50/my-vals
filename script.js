@@ -25,7 +25,6 @@ const tauntSound = document.getElementById('tauntSound');
 const victoryHeading = document.getElementById('victoryHeading');
 
 // --- AUDIO UNLOCKER ---
-// This ensures that the very first click on the page "activates" the sound
 const unlockAudio = () => {
     tauntSound.play().then(() => {
         tauntSound.pause();
@@ -43,7 +42,7 @@ startBtn.addEventListener('click', () => {
         return;
     }
 
-    // Force wake up the audio on this specific click
+    // Force wake up the audio engine
     tauntSound.play().then(() => {
         tauntSound.pause();
         tauntSound.currentTime = 0;
@@ -54,12 +53,16 @@ startBtn.addEventListener('click', () => {
 });
 
 yesBtn.addEventListener('click', () => {
+    // STOP and RESET the sound when she clicks "Yes"
+    tauntSound.pause();
+    tauntSound.currentTime = 0;
+
     if (currentStep < questions.length - 1) {
         currentStep++;
         questionText.innerText = questions[currentStep];
         messageText.innerText = ""; 
         
-        // Reset No button position for the next question
+        // Reset No button position to normal layout
         noBtn.style.position = 'relative';
         noBtn.style.left = '0';
         noBtn.style.top = '0';
@@ -69,14 +72,13 @@ yesBtn.addEventListener('click', () => {
 });
 
 const teleportNoButton = () => {
-    // Starts movement from "Wait... are you actually the cutest?"
-     // Reset and Play sound
-       if (currentStep >= 2) {
-        // ONLY play if the sound isn't already playing
+    if (currentStep >= 2) {
+        // Start the loop if it's currently paused
         if (tauntSound.paused) {
             tauntSound.play().catch(()=>{});
         }
-        // Show random message
+        
+        // Show random taunt message
         messageText.innerText = messages[Math.floor(Math.random() * messages.length)];
 
         // Teleportation logic
@@ -86,7 +88,6 @@ const teleportNoButton = () => {
         const btnWidth = noBtn.offsetWidth;
         const btnHeight = noBtn.offsetHeight;
 
-        // Stay within the card boundaries
         const newX = Math.floor(Math.random() * (areaWidth - btnWidth));
         const newY = Math.floor(Math.random() * (areaHeight - btnHeight));
 
@@ -97,16 +98,19 @@ const teleportNoButton = () => {
 
 noBtn.addEventListener('mouseover', teleportNoButton);
 noBtn.addEventListener('touchstart', (e) => {
-    e.preventDefault(); // CRITICAL: Stops the tap from clicking the button
+    e.preventDefault(); 
     teleportNoButton();
 });
 
 function showSuccess() {
+    // Ensure sound is definitely off on the final screen
+    tauntSound.pause();
+    tauntSound.currentTime = 0;
+
     victoryHeading.innerText = `Yay! I Knew It, ${userName}! 🥰`;
     content.classList.add('hidden');
     success.classList.remove('hidden');
     
-    // Continuous Sprinkles (Birthday style)
     const duration = 5 * 1000;
     const animationEnd = Date.now() + duration;
 
