@@ -1,0 +1,58 @@
+body {
+    background-color: #fff0f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    min-height: 250px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* This is the cage for the No button */
+.button-area {
+    margin-top: 30px;
+    height: 120px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s ease;
+}
+
+#yesBtn { background: #ff4d6d; color: white; z-index: 10; }
+#noBtn { background: #6c757d; color: white; position: absolute; }
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+    .card { padding: 20px; }
+    h2 { font-size: 1.4rem; }
+    button { padding: 12px 24px; }
+}
+
+.hidden { display: none; }
+#success img { width: 100%; border-radius: 15px; }
